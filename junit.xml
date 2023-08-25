@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="2" hostname="61db74ccd66d" name="pytest" skipped="0" tests="10" time="0.435" timestamp="2023-08-24T12:25:05.121880"><testcase classname="test_myinfra" name="test_passwd_file[local]" time="0.078"><failure message="assert 272 == 420&#10;  +272&#10;  -420">host = &lt;testinfra.host.Host local&gt;
+
+    def test_passwd_file(host):
+        passwd = host.file("/etc/passwd")
+        assert passwd.contains("root")
+        assert passwd.user == "root"
+        assert passwd.group == "root"
+&gt;       assert passwd.mode == 0o644
+E       assert 272 == 420
+E         +272
+E         -420
+
+test_myinfra.py:8: AssertionError</failure></testcase><testcase classname="test_myinfra" name="test_openssh_clients_package_not_installed[local]" time="0.089"><failure message="AssertionError: openssh clients package should not be installed&#10;assert not True&#10; +  where True = &lt;package openssh-clients&gt;.is_installed&#10; +    where &lt;package openssh-clients&gt; = &lt;class 'abc.RpmPackage'&gt;('openssh-clients')&#10; +      where &lt;class 'abc.RpmPackage'&gt; = &lt;testinfra.host.Host local&gt;.package">host = &lt;testinfra.host.Host local&gt;
+
+    def test_openssh_clients_package_not_installed(host):
+        # Check if the nftables package is not installed
+&gt;       assert not host.package("openssh-clients").is_installed, "openssh clients package should not be installed"
+E       AssertionError: openssh clients package should not be installed
+E       assert not True
+E        +  where True = &lt;package openssh-clients&gt;.is_installed
+E        +    where &lt;package openssh-clients&gt; = &lt;class 'abc.RpmPackage'&gt;('openssh-clients')
+E        +      where &lt;class 'abc.RpmPackage'&gt; = &lt;testinfra.host.Host local&gt;.package
+
+test_myinfra.py:12: AssertionError</failure></testcase><testcase classname="test_myinfra" name="test_nftables_package_not_installed[local]" time="0.025" /><testcase classname="test_myinfra" name="test_rsync_package_not_installed[local]" time="0.027" /><testcase classname="test_myinfra" name="test_stat_tmp_uid[local]" time="0.017" /><testcase classname="test_myinfra" name="test_vsftpd_package_not_installed[local]" time="0.024" /><testcase classname="test_myinfra" name="test_bind_package_not_installed[local]" time="0.020" /><testcase classname="test_myinfra" name="test_root_group_gid[local]" time="0.043" /><testcase classname="test_myinfra" name="test_stat_passwd_uid[local]" time="0.013" /><testcase classname="test_myinfra" name="test_root_account_not_locked[local]" time="0.013" /></testsuite></testsuites>
